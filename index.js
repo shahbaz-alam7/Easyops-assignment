@@ -2,10 +2,10 @@ const btn = document.getElementById("submitBtn");
 let fName = document.getElementById("fName");
 let lName = document.getElementById("lName");
 let phoneNo = document.getElementById("phoneNo");
-let nameCol = document.getElementById("name-col");
 let users = [];
 showUsers();
 
+// -----------Add new user-----------
 btn.addEventListener("click", (e) => {
   e.preventDefault();
 
@@ -28,10 +28,10 @@ btn.addEventListener("click", (e) => {
   console.log(users);
 });
 
-// display function
-function showUsers() {
+// -----------display users function------------
+function showUsers(myUsers = users) {
   let html = "";
-  users.forEach((element, index) => {
+  myUsers.forEach((element, index) => {
     // console.log(element, index);
     html += `
     <tr class="note my">
@@ -41,19 +41,19 @@ function showUsers() {
       <td>
       <button id="${
         element.phone
-      }" onclick="deletenote(this.id)" class="delbtn btn">Delete</button>
+      }" onclick="deletenote(this.id)" class="delbtn">Delete</button>
       </td>
     </tr>`;
   });
   let tableBody = document.getElementById("table-body");
-  if (users.length != 0) {
+  if (myUsers.length != 0) {
     tableBody.innerHTML = html;
   } else {
     tableBody.innerHTML = `<td class="no-data" colspan="4">We have nothing to show you.</td>`;
   }
 }
 
-// Check duplicate user
+// -----------Check duplicate user----------
 function checkDuplicae(name, phone) {
   for (let item of users) {
     if (item.name == name) {
@@ -68,19 +68,30 @@ function checkDuplicae(name, phone) {
   return true;
 }
 
+// ------------sort function-------------
+let nameCol = document.getElementById("name-col");
 nameCol.addEventListener("click", sortName);
-// sort function
 function sortName() {
   users = users.sort((a, b) => {
     return a.name.localeCompare(b.name);
   });
-  // console.log("sortName users", users);
   showUsers();
 }
 
-// Delete function
+//------------- Delete function------------
 function deletenote(id) {
   let confirm = window.confirm("Do you want to delete this user?");
   if (confirm) users = users.filter((item) => item.phone != id);
   showUsers();
 }
+
+// -----------search---------------
+let search = document.getElementById("search");
+search.addEventListener("change", () => {
+  let user = Object.assign([], users);
+  console.log("search.addEventListener ~ user", user);
+  user = user.filter((item) =>
+    item.name.toLowerCase().includes(search.value.toLowerCase())
+  );
+  showUsers(user);
+});

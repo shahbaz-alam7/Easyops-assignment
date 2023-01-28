@@ -8,7 +8,6 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  /* background-color: #04aa6d; */
 }
 
 input {
@@ -16,8 +15,8 @@ input {
   border: 2px solid green;
   outline: none;
   width: 100%;
-  padding: 12px 20px;
-  /* margin: 8px 0; */
+  padding: 12px 10px;
+  margin-bottom: 5px;
   border: 1px solid #ccc;
   border-radius: 5px;
 }
@@ -27,7 +26,7 @@ input {
 .form {
   width: 400px;
   margin: auto;
-  padding: 20px;
+  padding: 10px 20px;
   border: 1px solid #ccc;
 }
 
@@ -37,6 +36,7 @@ label {
   margin: 10px 0;
 }
 
+/* =========Submit button ========= */
 #submitBtn {
   width: 100%;
   background-color: #4caf50;
@@ -51,6 +51,21 @@ label {
   background-color: #45a049;
 }
 
+/* =========Search ========= */
+.search {
+  border: 2px solid #ccc;
+  width: 400px;
+  margin: 10px 0;
+  border-radius: 30px;
+  padding: 0 15px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.search input {
+  outline: none;
+  border: none;
+}
 /* ================table================= */
 .no-data {
   /* background-color: red; */
@@ -82,4 +97,18 @@ label {
   text-align: left;
   background-color: #45a049;
   color: white;
+}
+
+/* =========delete button ========= */
+.delbtn {
+  width: 100%;
+  background-color: #de5d4f;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.delbtn:hover {
+  background-color: #aa5045;
 }
